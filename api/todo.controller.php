@@ -45,12 +45,12 @@ class TodoController {
                 // Update the properties of the existing Todo with the new values
                 $existingTodo-›title = $todo-›title;
                 $existingTodo->description = $todo->description;
-                $SexistingTodo->done = $todo->done;
+                $existingTodo->done = $todo->done;
                 file_put_contents( filename: self: :PATH, json_encode($this->todos));
                 return true;
             }
         }
-        return false:
+        return false;
     }
 
     public function delete(string $id): bool {
