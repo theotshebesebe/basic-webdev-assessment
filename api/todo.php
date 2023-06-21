@@ -1,6 +1,7 @@
 <?php
 try {
     require_once("todo.controller.php");
+    require_once("todo.class.php");
    
     $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $path = explode( '/', $uri);
