@@ -35,7 +35,7 @@ class TodoController {
     
     public function create (Todo $newTodo): bool {
         $this->todos[] = $newTodo;
-        file_put_contents( filename: self: :PATH, json_encode($this-›todos));
+        file_put_contents(self::PATH, json_encode($this->todos));
         return true;
     }
 
@@ -43,10 +43,10 @@ class TodoController {
         foreach ($this->todos as $existingTodo) {
             if ($existingTodo->id == $id) {
                 // Update the properties of the existing Todo with the new values
-                $existingTodo-›title = $todo-›title;
+                $existingTodo->title = $todo->title;
                 $existingTodo->description = $todo->description;
                 $existingTodo->done = $todo->done;
-                file_put_contents( filename: self: :PATH, json_encode($this->todos));
+                file_put_contents(self::PATH, json_encode($this->todos));
                 return true;
             }
         }
