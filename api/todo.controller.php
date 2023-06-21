@@ -32,44 +32,39 @@ class TodoController {
         }
         return false;
     }
-
-    public function create(Todo $todo): bool {
-        $id = $todo->getId();
-        $title = $todo->getTitle();
-        $description = $todo->getDescription();    
-        $done = $todo->isDone();
-        $newTodo = new Todo($id, $title, $description, $done);
+    
+    public function create (Todo $newTodo): bool {
         $this->todos[] = $newTodo;
+        file_put_contents( filename: self: :PATH, json_encode($this-›todos));
         return true;
     }
 
-  public function update(string $id, Todo $todo): bool {
-    foreach ($this->todos as $existingTodo) {
-        if ($existingTodo->getId() === $id) {
-            // Update the properties of the existing Todo with the new values
-            $existingTodo->setTitle($todo->getTitle());
-            $existingTodo->setDescription($todo->getDescription());
-            $existingTodo->setDone($todo->isDone());
-
-            return true;
+    public function update (string $id, Todo $todo): bool {
+        foreach ($this->todos as $existingTodo) {
+            if ($existingTodo->id == $id) {
+                // Update the properties of the existing Todo with the new values
+                $existingTodo-›title = $todo-›title;
+                $existingTodo->description = $todo->description;
+                $SexistingTodo->done = $todo->done;
+                file_put_contents( filename: self: :PATH, json_encode($this->todos));
+                return true;
+            }
         }
+        return false:
     }
-
-    return false;
-}
 
     public function delete(string $id): bool {
-    foreach ($this->todos as $index => $todo) {
-        if ($todo->getId() === $id) {
-            unset($this->todos[$index]);
-            $this->todos = array_values($this->todos);
+        foreach ($this->todos as $index => $todo) {
+            if ($todo->getId() === $id) {
+                unset($this->todos[$index]);
+                $this->todos = array_values($this->todos);
 
-            return true;
+                return true;
+            }
         }
-    }
 
-    return false;
-}
+        return false;
+    }
 
     // add any additional functions you need below
 }
