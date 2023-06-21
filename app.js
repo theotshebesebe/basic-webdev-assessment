@@ -3,11 +3,11 @@ function putTodo(todo) {
 
   fetch(url, {
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+      headers: {
+        'Content-Type': 'application/json',
+      },
     body: JSON.stringify(todo),
-  })
+    })
     .then(response => {
       if (response.ok) {
         console.log('Todo updated successfully');
@@ -28,9 +28,9 @@ function postTodo(todo) {
 
   fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+      headers: {
+        'Content-Type': 'application/json',
+      },
     body: JSON.stringify(todo),
   })
     .then(response => {
